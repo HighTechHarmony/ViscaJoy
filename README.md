@@ -1,6 +1,8 @@
 # ViscaJoy
 Win32 app for controlling PTZ cameras via a flight controller joystick
 
+I originally wrote this many years ago as a way to control several mounted Sony EVI-D30 cameras in fixed positions in a studio.  These cameras perform quite well, are cheap and extremely easy to come by (since they are not digital/HD).  All you need is a decent capture interface and a video switcher/mixer if desired.
+
 **VISCA** is a standard RS232 based protocol for moving, panning, tilting and zooming various cameras.  
 **DirectInput** is a DirectX component that gets input from, among other things, flight-controller-style joysticks.
 
@@ -8,20 +10,30 @@ Win32 app for controlling PTZ cameras via a flight controller joystick
 # Requirements
 * Windows with DirectX support
 
-* DirectInput library files.  I believe these can be obtained from the [Microsoft Windows SDK](https://www.microsoft.com/en-us/download/details.aspx?id=8279), "Headers and Libraries.zip".  In particular, you need DXLib\dinput8.lib and DXLib\dxguid.lib
-
-* [Damien Douxchamps' libVISCA library](https://damien.douxchamps.net/libvisca)
-
 * A FC-style joystick (tested with Logitech Wingman Attack)
 
 * 1-8 VISCA compatible PTZ camera(s), (tested with the Sony EVI-D30)
 
+* Serial port or USB serial port adapter
+
+* RS-232 Serial cable
+
+
 
 # Building
-* Change the #define COM_PORT to the port your camera is on. Currently set to COM1
-* Provide DirectInput library files.  
-* Provide libVISCA library (libvisca_win32.c, libvisca.c)
+Originally built using Watcom C Compiler
 
+
+## Dependencies
+* DirectInput library files (DirectX, Windows SDK)
+I believe these can be obtained from the [Microsoft Windows SDK](https://www.microsoft.com/en-us/download/details.aspx?id=8279), "Headers and Libraries.zip".  In particular, you need DXLib\dinput8.lib and DXLib\dxguid.lib
+
+* [Damien Douxchamps' libVISCA library](https://damien.douxchamps.net/libvisca) (libvisca_win32.c, libvisca.c)
+
+
+## Customizations You Might Need
+* **Set Com Port**: Edit Joystick1.c and Change the #define COM_PORT to the port your camera is on. Currently set to COM1
+* **Tweak joystick response**: Also in Joystick1.c, If the joystick operation in relation to the camera movement is not to your liking, you may mess with various #defined *FACTORs
 
 # Operation
 
